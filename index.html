@@ -72,6 +72,45 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,10,10,0.95);
 .card-icon{font-size:2.5rem;margin-bottom:16px;display:block}
 .card-title{font-size:1.1rem;font-weight:800;margin-bottom:10px}
 .card-desc{color:var(--muted);font-size:.87rem;line-height:1.6}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section{background:linear-gradient(135deg,#001a1f,#0a0a0a);padding:80px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1100px;margin:50px auto 0}
+.project-card{border-radius:20px;padding:28px;transition:all .3s;text-decoration:none;color:var(--text);display:block;position:relative;overflow:hidden}
+.project-card::after{content:'';position:absolute;inset:0;border-radius:20px;opacity:0;transition:opacity .3s}
+.project-card:hover{transform:translateY(-8px)}
+.project-card:hover::after{opacity:1}
+
+.pc-quran{background:linear-gradient(135deg,#071a0d,#0d2e15);border:1.5px solid rgba(0,200,100,.2)}
+.pc-quran:hover{border-color:rgba(0,200,100,.6);box-shadow:0 20px 40px rgba(0,200,100,.15)}
+.pc-quran .pc-tag{background:rgba(0,200,100,.1);border:1px solid rgba(0,200,100,.25);color:#00e676}
+.pc-quran .pc-link{color:#00e676}
+
+.pc-english{background:linear-gradient(135deg,#070f1a,#0d1a2e);border:1.5px solid rgba(0,188,212,.2)}
+.pc-english:hover{border-color:rgba(0,188,212,.6);box-shadow:0 20px 40px rgba(0,188,212,.15)}
+.pc-english .pc-tag{background:rgba(0,188,212,.1);border:1px solid rgba(0,188,212,.25);color:#00d4ff}
+.pc-english .pc-link{color:#00d4ff}
+
+.pc-puzzle{background:linear-gradient(135deg,#1a0a2a,#2d1045);border:1.5px solid rgba(192,132,252,.2)}
+.pc-puzzle:hover{border-color:rgba(192,132,252,.6);box-shadow:0 20px 40px rgba(192,132,252,.15)}
+.pc-puzzle .pc-tag{background:rgba(192,132,252,.1);border:1px solid rgba(192,132,252,.25);color:#c084fc}
+.pc-puzzle .pc-link{color:#c084fc}
+
+.pc-burger{background:linear-gradient(135deg,#1a0500,#2d0f00);border:1.5px solid rgba(230,100,57,.2)}
+.pc-burger:hover{border-color:rgba(230,100,57,.6);box-shadow:0 20px 40px rgba(230,100,57,.15)}
+.pc-burger .pc-tag{background:rgba(230,100,57,.1);border:1px solid rgba(230,100,57,.25);color:#f4a261}
+.pc-burger .pc-link{color:#f4a261}
+
+.pc-emoji{font-size:3rem;margin-bottom:16px;display:block}
+.pc-title{font-size:1.1rem;font-weight:900;margin-bottom:8px}
+.pc-desc{color:var(--muted);font-size:.82rem;line-height:1.6;margin-bottom:16px}
+.pc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.pc-tag{padding:3px 12px;border-radius:20px;font-size:.68rem;font-weight:700}
+.pc-link{font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.pc-link::after{content:'←';transition:transform .2s}
+.project-card:hover .pc-link::after{transform:translateX(-4px)}
+/* ===== END PROJECTS ===== */
+
 .platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
 .platform-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;transition:all .3s;text-decoration:none;color:var(--text);display:block}
 .platform-card:hover{transform:translateY(-6px)}
@@ -116,6 +155,8 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:30px 4
   .form-row{grid-template-columns:1fr}
   .section{padding:60px 20px}
   .sec-title{font-size:1.7rem}
+  .projects-section{padding:60px 20px}
+  .projects-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -126,6 +167,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:30px 4
   <ul class="nav-links">
     <li><a onclick="go('about')">من أنا</a></li>
     <li><a onclick="go('content')">المحتوى</a></li>
+    <li><a onclick="go('projects')">مشاريعي</a></li>
     <li><a onclick="go('platforms')">منصاتي</a></li>
     <li><a onclick="go('contact')">تواصل</a></li>
   </ul>
@@ -136,6 +178,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:30px 4
 <div class="mob-menu" id="mobMenu">
   <a onclick="go('about');toggleMob()">👤 من أنا</a>
   <a onclick="go('content');toggleMob()">📱 المحتوى</a>
+  <a onclick="go('projects');toggleMob()">🚀 مشاريعي</a>
   <a onclick="go('platforms');toggleMob()">🌐 منصاتي</a>
   <a onclick="go('contact');toggleMob()">📬 تواصل</a>
 </div>
@@ -152,7 +195,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:30px 4
     <p class="hero-sub">أشارك أحدث شروحات الآيفون، التحديثات، المميزات الخفية، وأفضل المواقع والتطبيقات التقنية بأسلوب بسيط وممتع</p>
     <div class="hero-btns">
       <a class="btn-main" onclick="go('platforms')">تابعني الآن</a>
-      <a class="btn-sec" onclick="go('about')">تعرف علي أكثر</a>
+      <a class="btn-sec" onclick="go('projects')">🚀 شوف مشاريعي</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item"><span class="stat-num">5K+</span><span class="stat-label">متابع انستقرام</span></div>
@@ -215,6 +258,73 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:30px 4
   </div>
 </div>
 </div>
+
+<!-- ===== PROJECTS SECTION ===== -->
+<div id="projects">
+<div class="projects-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="sec-tag">مشاريعي</div>
+    <h2 class="sec-title">تطبيقات ومواقع <span>طورتها بنفسي</span></h2>
+    <p class="sec-sub">مشاريع برمجية حقيقية — كلها مجانية ومتاحة للجميع</p>
+  </div>
+  <div class="projects-grid">
+
+    <!-- قرآن -->
+    <a class="project-card pc-quran" href="https://tareq-sudo.github.io/quran-app/" target="_blank">
+      <span class="pc-emoji">🕌</span>
+      <div class="pc-title">تطبيق القرآن الكريم</div>
+      <div class="pc-desc">مصحف كامل مع تلاوة صوتية، أذكار، تسبيح، ختمة قرآنية، وآية اليوم</div>
+      <div class="pc-tags">
+        <span class="pc-tag">PWA</span>
+        <span class="pc-tag">مجاني</span>
+        <span class="pc-tag">JavaScript</span>
+      </div>
+      <div class="pc-link">فتح التطبيق</div>
+    </a>
+
+    <!-- إنجليزي -->
+    <a class="project-card pc-english" href="https://tareq-sudo.github.io/English/" target="_blank">
+      <span class="pc-emoji">📚</span>
+      <div class="pc-title">تعلم الإنجليزية</div>
+      <div class="pc-desc">منصة تعليمية متكاملة بكتب ومحادثات يومية ومفردات من المستوى A1 حتى B2</div>
+      <div class="pc-tags">
+        <span class="pc-tag">تعليمي</span>
+        <span class="pc-tag">مجاني</span>
+        <span class="pc-tag">JavaScript</span>
+      </div>
+      <div class="pc-link">فتح التطبيق</div>
+    </a>
+
+    <!-- ألغاز -->
+    <a class="project-card pc-puzzle" href="https://tareq-sudo.github.io/Puzzlegame/" target="_blank">
+      <span class="pc-emoji">🧩</span>
+      <div class="pc-title">لعبة الألغاز</div>
+      <div class="pc-desc">7 ألعاب ذكاء متكاملة — ذاكرة، أرقام، كلمات، ألوان، تخمين، ضرب وأكثر!</div>
+      <div class="pc-tags">
+        <span class="pc-tag">لعبة</span>
+        <span class="pc-tag">مجاني</span>
+        <span class="pc-tag">JavaScript</span>
+      </div>
+      <div class="pc-link">العب الآن</div>
+    </a>
+
+    <!-- مطعم -->
+    <a class="project-card pc-burger" href="#" target="_blank">
+      <span class="pc-emoji">🍔</span>
+      <div class="pc-title">تطبيق المطعم</div>
+      <div class="pc-desc">نموذج تطبيق مطعم احترافي — قائمة طعام، طلب أونلاين، تتبع توصيل وتقييمات</div>
+      <div class="pc-tags">
+        <span class="pc-tag">للبيع</span>
+        <span class="pc-tag">نموذج</span>
+        <span class="pc-tag">JavaScript</span>
+      </div>
+      <div class="pc-link">شاهد النموذج</div>
+    </a>
+
+  </div>
+</div>
+</div>
+<!-- ===== END PROJECTS ===== -->
 
 <div id="platforms">
 <div class="section">
